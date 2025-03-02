@@ -135,7 +135,14 @@ export default function GreetingPage() {
         }}
         className="mt-6 px-5 py-2 text-white text-sm font-semibold rounded-full shadow-lg transition"
         whileTap={{ scale: 0.9 }}
-        onClick={handlePlay}
+        onClick={() => {
+          if (playing) {
+            audio?.pause();
+          } else {
+            audio?.play();
+          }
+          setPlaying(!playing);
+        }}
       >
         {playing ? "🔊 Тоглож байна..." : "🎶 Ая тоглуулах"}
       </motion.button>
