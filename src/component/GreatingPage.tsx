@@ -111,7 +111,7 @@ export default function GreetingPage() {
   }, []);
 
   return (
-    <div className="relative flex flex-col items-center justify-center min-h-screen bg-red-200 overflow-hidden">
+    <div className="relative flex flex-col items-center justify-center min-h-screen bg-gradient-to-b from-pink-100 to-red-200 overflow-hidden">
       {/* Мэндчилгээний текст */}
       <motion.h1
         className="text-xl md:text-4xl font-bold text-pink-500 text-center drop-shadow-lg"
