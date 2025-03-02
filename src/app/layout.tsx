@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import GreetingPage from "@/component/GreatingPage";
 
 export const metadata: Metadata = {
   title: "Pretty greatings",
@@ -13,7 +14,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <GreetingPage />
+        {children}
+      </body>
     </html>
   );
 }
