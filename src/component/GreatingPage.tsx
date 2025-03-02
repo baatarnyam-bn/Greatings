@@ -33,7 +33,10 @@ export default function GreetingPage() {
   };
 
   return (
-    <div className="relative flex flex-col items-center justify-center min-h-screen bg-gradient-to-b from-pink-100 to-red-200 overflow-hidden">
+    <div
+      className="relative flex flex-col items-center justify-center min-h-screen overflow-hidden"
+      style={{ background: "linear-gradient(to bottom, #ffdde1, #ee9ca7)" }}
+    >
       {/* Гэрэлтэх эффект */}
       {playing && (
         <motion.div
@@ -127,9 +130,10 @@ export default function GreetingPage() {
 
       {/* 🎶 Дуу тоглуулах товч */}
       <motion.button
-        className={`mt-6 px-5 py-2 text-white text-sm font-semibold rounded-full shadow-lg transition ${
-          playing ? "bg-green-500" : "bg-pink-500"
-        }`}
+        style={{
+          backgroundColor: playing ? "#22c55e" : "#f6339a",
+        }}
+        className="mt-6 px-5 py-2 text-white text-sm font-semibold rounded-full shadow-lg transition"
         whileTap={{ scale: 0.9 }}
         onClick={handlePlay}
       >
