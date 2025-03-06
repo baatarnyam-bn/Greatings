@@ -11,6 +11,7 @@ export default function GreetingPage() {
   const [flowerPositions, setFlowerPositions] = useState<number[]>([]);
   const [balloonPositions, setBalloonPositions] = useState<number[]>([]);
   const [playing, setPlaying] = useState(false);
+  const [showText, setShowText] = useState(false);
 
   useEffect(() => {
     if (audio) {
@@ -29,6 +30,7 @@ export default function GreetingPage() {
     if (audio) {
       audio.play();
       setPlaying(true);
+      setTimeout(() => setShowText(true), 8000);
     }
   };
 
@@ -61,10 +63,23 @@ export default function GreetingPage() {
         className="text-sm md:text-2xl text-white mt-4 text-center px-4"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1, duration: 1 }}
+        transition={{ delay: 2, duration: 1 }}
       >
-        Хамгийн гоё баяр ирлээ! 🎁 💐
+        💐 Ая тоглуулаад хүлээнэ үү! 💐
+        {/* 🎁 */}
       </motion.p>
+
+      {/* 3 сек-ийн дараа гарч ирэх текст */}
+      {showText && (
+        <motion.div
+          className="text-2xl font-semibold text-pink-700 mt-6 text-center"
+          initial={{ opacity: 0, scale: 0.5 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1 }}
+        >
+          💕 Text 💕
+        </motion.div>
+      )}
 
       {/* 🌸 Цэцэг унах анимашн */}
       {flowerPositions.map((left, i) => (
@@ -106,28 +121,6 @@ export default function GreetingPage() {
         </motion.div>
       ))}
 
-      {/* ✨ Гялалзах эффект */}
-      {playing &&
-        Array.from({ length: 10 }).map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute text-lg text-yellow-300"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-            }}
-            initial={{ opacity: 0, scale: 0 }}
-            animate={{ opacity: [0, 1, 0], scale: [0, 1, 0] }}
-            transition={{
-              repeat: Infinity,
-              duration: Math.random() * 2 + 1,
-              delay: Math.random() * 3,
-            }}
-          >
-            ✨
-          </motion.div>
-        ))}
-
       {/* 🎶 Дуу тоглуулах товч */}
       <motion.button
         style={{
@@ -138,10 +131,11 @@ export default function GreetingPage() {
         onClick={() => {
           if (playing) {
             audio?.pause();
+            setPlaying(false);
+            setShowText(false);
           } else {
-            audio?.play();
+            handlePlay();
           }
-          setPlaying(!playing);
         }}
       >
         {playing ? "🔊 Тоглож байна..." : "🎶 Ая тоглуулах"}
