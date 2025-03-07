@@ -12,6 +12,7 @@ export default function GreetingPage() {
   const [balloonPositions, setBalloonPositions] = useState<number[]>([]);
   const [playing, setPlaying] = useState(false);
   const [showText, setShowText] = useState(false);
+  const [showText2, setShowText2] = useState(false);
 
   useEffect(() => {
     if (audio) {
@@ -30,7 +31,8 @@ export default function GreetingPage() {
     if (audio) {
       audio.play();
       setPlaying(true);
-      setTimeout(() => setShowText(true), 8000);
+      setTimeout(() => setShowText(true), 4000);
+      setTimeout(() => setShowText2(true), 16000);
     }
   };
 
@@ -56,28 +58,44 @@ export default function GreetingPage() {
         animate={{ scale: 1, opacity: 1 }}
         transition={{ duration: 1 }}
       >
-        💖 Баярын мэнд хүргэе! 💖
+        💖 Баярын мэнд хүргэе! cutie🌸 💖
       </motion.h1>
 
-      <motion.p
-        className="text-sm md:text-2xl text-white mt-4 text-center px-4"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 2, duration: 1 }}
-      >
-        💐 Ая тоглуулаад хүлээнэ үү! 💐
-        {/* 🎁 */}
-      </motion.p>
+      {!playing && (
+        <motion.p
+          className="text-sm md:text-2xl text-white mt-4 text-center px-4"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 2, duration: 1 }}
+        >
+          💐 Ая тоглуулаад хүлээнэ үү! 💐
+        </motion.p>
+      )}
 
-      {/* 3 сек-ийн дараа гарч ирэх текст */}
+      {/* 5 сек-ийн дараа гарч ирэх текст */}
       {showText && (
         <motion.div
-          className="text-2xl font-semibold text-pink-700 mt-6 text-center"
+          className="text-sm font-semibold text-pink-700 mt-6 text-center px-4 leading-relaxed"
           initial={{ opacity: 0, scale: 0.5 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1 }}
         >
-          💕 Text 💕
+          💕Чи бол миний мэдэх хамгийн хөөрхөн бас мундаг нь шүү! Энэ өдрийг
+          чамайг аз жаргалтай байгаасай, нэг хором ч битгий гуниглаасай гэж чин
+          сэтгэлээсээ хүсч байна. Тиймээс өнөөдөр орой хоол идэнгээ хамтдаа
+          цагийг хөгжилтэй өнгөрөөхийг урьж байна💕
+        </motion.div>
+      )}
+
+      {/* 12 сек-ийн дараа гарч ирэх текст */}
+      {showText2 && (
+        <motion.div
+          className="text-xs font-semibold text-white mt-6 text-center"
+          initial={{ opacity: 0, scale: 0.5 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1 }}
+        >
+          💐 Зөвшөөрч байвал 🌸 эможиг илгээнэ үү!💐
         </motion.div>
       )}
 
@@ -120,6 +138,28 @@ export default function GreetingPage() {
           🎈
         </motion.div>
       ))}
+
+      {playing &&
+        Array.from({ length: 10 }).map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute text-lg text-yellow-300"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+            }}
+            initial={{ opacity: 0, scale: 0 }}
+            animate={{ opacity: [0, 1, 0], scale: [0, 1.2, 0] }}
+            transition={{
+              repeat: Infinity,
+              duration: Math.random() * 2 + 1,
+              delay: Math.random() * 3,
+              ease: "easeInOut",
+            }}
+          >
+            ✨
+          </motion.div>
+        ))}
 
       {/* 🎶 Дуу тоглуулах товч */}
       <motion.button
