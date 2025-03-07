@@ -75,7 +75,8 @@ export default function GreetingPage() {
       {/* 5 сек-ийн дараа гарч ирэх текст */}
       {showText && (
         <motion.div
-          className="text-sm font-semibold text-pink-700 mt-6 text-center px-4 leading-relaxed max-w-lg"
+          className="text-sm font-semibold mt-6 text-center px-4 leading-relaxed max-w-lg"
+          style={{ color: "#be185d" }}
           initial={{ opacity: 0, scale: 0.5 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1 }}
