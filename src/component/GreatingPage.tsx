@@ -58,7 +58,7 @@ export default function GreetingPage() {
         animate={{ scale: 1, opacity: 1 }}
         transition={{ duration: 1 }}
       >
-        💖 Баярын мэнд хүргэе! cutie!!!🌸 💖
+        💖 Баярын мэнд хүргэе! cutie!🌸 💖
       </motion.h1>
 
       {!playing && (
