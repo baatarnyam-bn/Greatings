@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 
 export default function GreetingPage() {
   const [audio] = useState(
-    typeof Audio !== "undefined" ? new Audio("/music.mp3") : null
+    typeof Audio !== "undefined" ? new Audio("/music.mp3") : null,
   );
 
   const [flowerPositions, setFlowerPositions] = useState<number[]>([]);
@@ -58,7 +58,7 @@ export default function GreetingPage() {
         animate={{ scale: 1, opacity: 1 }}
         transition={{ duration: 1 }}
       >
-        💖 Баярын мэнд хүргэе! cutie🌸 💖
+        💖 Баярын мэнд хүргэе! cutie!!!🌸 💖
       </motion.h1>
 
       {!playing && (
